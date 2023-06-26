@@ -1,5 +1,4 @@
-//@ts-check
-import React, {useState, Fragment} from "react";
+import {useState} from "react";
 
 import {fakeDispatch, changeState} from "../utils.js";
 import {ModalActions, TagsState, TodosState} from "../context.js";

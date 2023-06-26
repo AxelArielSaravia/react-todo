@@ -8048,61 +8048,8 @@ var require_react_dom = __commonJS((exports, module) => {
   }
 });
 
-// node_modules/react/cjs/react-jsx-runtime.production.min.js
-var exports_react_jsx_runtime_production_min = {};
-__export(exports_react_jsx_runtime_production_min, {
-  jsxs: () => {
-    {
-      return $jsxs;
-    }
-  },
-  jsx: () => {
-    {
-      return $jsx;
-    }
-  },
-  Fragment: () => {
-    {
-      return $Fragment2;
-    }
-  }
-});
-var $Fragment2, $jsx, $jsxs;
-var init_react_jsx_runtime_production_min = __esm(() => {
-  var f2 = __toESM(require_react(), 1);
-  var q2 = function(c, a, g2) {
-    var b, d = {}, e = null, h2 = null;
-    g2 !== undefined && (e = "" + g2);
-    a.key !== undefined && (e = "" + a.key);
-    a.ref !== undefined && (h2 = a.ref);
-    for (b in a)
-      m2.call(a, b) && !p3.hasOwnProperty(b) && (d[b] = a[b]);
-    if (c && c.defaultProps)
-      for (b in a = c.defaultProps, a)
-        d[b] === undefined && (d[b] = a[b]);
-    return { $$typeof: k2, type: c, key: e, ref: h2, props: d, _owner: n2.current };
-  };
-  var k2 = Symbol.for("react.element");
-  var l2 = Symbol.for("react.fragment");
-  var m2 = Object.prototype.hasOwnProperty;
-  var n2 = f2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner;
-  var p3 = { key: true, ref: true, __self: true, __source: true };
-  $Fragment2 = l2;
-  $jsx = q2;
-  $jsxs = q2;
-});
-
-// node_modules/react/jsx-runtime.js
-var require_jsx_runtime = __commonJS((exports, module) => {
-  init_react_jsx_runtime_production_min();
-  if (true) {
-    module.exports = (exports_react_jsx_runtime_production_min);
-  } else {
-  }
-});
-
 // src/index.jsx
-var React11 = __toESM(require_react(), 1);
+var React = __toESM(require_react(), 1);
 
 // node_modules/react-dom/client.js
 var m = __toESM(require_react_dom(), 1);
@@ -8114,9 +8061,6 @@ if (true) {
 } else {
 }
 var i;
-
-// src/components/app.jsx
-var import_react10 = __toESM(require_react(), 1);
 
 // src/utils.js
 var fakeDispatch = function() {
@@ -8697,76 +8641,52 @@ var ModalActions = {
 TodosState.filter(FilterState);
 
 // src/components/todoList.jsx
-var import_react6 = __toESM(require_react(), 1);
+var import_react4 = __toESM(require_react(), 1);
 
 // src/components/todoItem.jsx
-var import_react5 = __toESM(require_react(), 1);
-
+var import_react3 = __toESM(require_react(), 1);
 // src/components/tag.jsx
-var import_react = __toESM(require_react(), 1);
-var jsx_runtime = __toESM(require_jsx_runtime(), 1);
 var TagSection = function({ TagInput, TagsSuggested, addButton, addNewTag }) {
-  return jsx_runtime.jsx("div", {
-    className: "add-tags",
-    children: [
-      jsx_runtime.jsx("div", {
-        className: "input-tags",
-        children: [
-          TagInput,
-          TagsSuggested
-        ]
-      }),
-      addButton && jsx_runtime.jsx("button", {
-        className: "add-button",
-        type: "button",
-        onClick: addNewTag,
-        children: jsx_runtime.jsx("p", {
-          children: "add"
-        })
-      })
-    ]
-  });
+  return React.createElement("div", {
+    className: "add-tags"
+  }, React.createElement("div", {
+    className: "input-tags"
+  }, TagInput, TagsSuggested), addButton && React.createElement("button", {
+    className: "add-button",
+    type: "button",
+    onClick: addNewTag
+  }, React.createElement("p", null, "add")));
 };
 var TagDeleteButton = function({ tag: tag2, index, onClick }) {
-  return jsx_runtime.jsx("button", {
+  return React.createElement("button", {
     type: "button",
     title: `remove ${tag2} tag`,
     className: "tag-button",
     "data-index": index,
-    onClick,
-    children: jsx_runtime.jsx("span", {
-      children: tag2
-    })
-  });
+    onClick
+  }, React.createElement("span", null, tag2));
 };
 var TagAddButton = function({ tag: tag2, onClick }) {
-  return jsx_runtime.jsx("button", {
+  return React.createElement("button", {
     type: "button",
     title: `add ${tag2} tag`,
     className: "tag-button",
     "data-value": tag2,
-    onPointerDown: onClick,
-    children: jsx_runtime.jsx("span", {
-      children: tag2
-    })
-  });
+    onPointerDown: onClick
+  }, React.createElement("span", null, tag2));
 };
 var Tag = function({ text }) {
-  return jsx_runtime.jsx("div", {
+  return React.createElement("div", {
     className: "tag",
-    title: `tag: ${text}`,
-    children: jsx_runtime.jsx("span", {
-      children: text
-    })
-  });
+    title: `tag: ${text}`
+  }, React.createElement("span", null, text));
 };
 
 // src/components/todoModal.jsx
-var import_react4 = __toESM(require_react(), 1);
+var import_react2 = __toESM(require_react(), 1);
 
 // src/components/color.jsx
-var import_react2 = __toESM(require_react(), 1);
-var jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
+var import_react = __toESM(require_react(), 1);
 var Color = function({
   color: color2,
   check,
@@ -8774,239 +8694,193 @@ var Color = function({
   dispatch,
   type
 }) {
-  dispatch[color2] = import_react2.useState(true)[1];
-  return jsx_runtime2.jsx("label", {
-    className: "color-item",
-    children: [
-      jsx_runtime2.jsx("input", {
-        className: "display-none",
-        type,
-        value: color2,
-        checked: check(color2),
-        onChange
-      }),
-      jsx_runtime2.jsx("div", {
-        role: "radio",
-        className: `color-view ${color2}`,
-        title: color2
-      })
-    ]
-  });
+  dispatch[color2] = import_react.useState(true)[1];
+  return React.createElement("label", {
+    className: "color-item"
+  }, React.createElement("input", {
+    className: "display-none",
+    type,
+    value: color2,
+    checked: check(color2),
+    onChange
+  }), React.createElement("div", {
+    role: "radio",
+    className: `color-view ${color2}`,
+    title: color2
+  }));
 };
 var ColorContainer = function({ type, check, onChange, dispatch }) {
-  return jsx_runtime2.jsx("div", {
+  return React.createElement("div", {
     className: "color-container",
-    role: "radiogroup",
-    children: [
-      jsx_runtime2.jsx(Color, {
-        color: "default",
-        check,
-        onChange,
-        dispatch,
-        type
-      }),
-      jsx_runtime2.jsx(Color, {
-        color: "blue",
-        check,
-        onChange,
-        dispatch,
-        type
-      }),
-      jsx_runtime2.jsx(Color, {
-        color: "purple",
-        check,
-        onChange,
-        dispatch,
-        type
-      }),
-      jsx_runtime2.jsx(Color, {
-        color: "pink",
-        check,
-        onChange,
-        dispatch,
-        type
-      }),
-      jsx_runtime2.jsx(Color, {
-        color: "red",
-        check,
-        onChange,
-        dispatch,
-        type
-      }),
-      jsx_runtime2.jsx(Color, {
-        color: "brown",
-        check,
-        onChange,
-        dispatch,
-        type
-      }),
-      jsx_runtime2.jsx(Color, {
-        color: "yellow",
-        check,
-        onChange,
-        dispatch,
-        type
-      }),
-      jsx_runtime2.jsx(Color, {
-        color: "green",
-        check,
-        onChange,
-        dispatch,
-        type
-      })
-    ]
-  });
+    role: "radiogroup"
+  }, React.createElement(Color, {
+    color: "default",
+    check,
+    onChange,
+    dispatch,
+    type
+  }), React.createElement(Color, {
+    color: "blue",
+    check,
+    onChange,
+    dispatch,
+    type
+  }), React.createElement(Color, {
+    color: "purple",
+    check,
+    onChange,
+    dispatch,
+    type
+  }), React.createElement(Color, {
+    color: "pink",
+    check,
+    onChange,
+    dispatch,
+    type
+  }), React.createElement(Color, {
+    color: "red",
+    check,
+    onChange,
+    dispatch,
+    type
+  }), React.createElement(Color, {
+    color: "brown",
+    check,
+    onChange,
+    dispatch,
+    type
+  }), React.createElement(Color, {
+    color: "yellow",
+    check,
+    onChange,
+    dispatch,
+    type
+  }), React.createElement(Color, {
+    color: "green",
+    check,
+    onChange,
+    dispatch,
+    type
+  }));
 };
 var color_default = ColorContainer;
 
 // src/components/icons.jsx
-var import_react3 = __toESM(require_react(), 1);
-var jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
 var IconOptions = function() {
-  return jsx_runtime3.jsx("svg", {
+  return React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     className: "icon icon-options",
-    viewBox: "0 0 512 512",
-    children: [
-      jsx_runtime3.jsx("title", {
-        children: "Options"
-      }),
-      jsx_runtime3.jsx("path", {
-        fill: "none",
-        stroke: "currentColor",
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-        strokeWidth: "32",
-        d: "M368 128h80M64 128h240M368 384h80M64 384h240M208 256h240M64 256h80"
-      }),
-      jsx_runtime3.jsx("circle", {
-        cx: "336",
-        cy: "128",
-        r: "32",
-        fill: "none",
-        stroke: "currentColor",
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-        strokeWidth: "32"
-      }),
-      jsx_runtime3.jsx("circle", {
-        cx: "176",
-        cy: "256",
-        r: "32",
-        fill: "none",
-        stroke: "currentColor",
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-        strokeWidth: "32"
-      }),
-      jsx_runtime3.jsx("circle", {
-        cx: "336",
-        cy: "384",
-        r: "32",
-        fill: "none",
-        stroke: "currentColor",
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-        strokeWidth: "32"
-      })
-    ]
-  });
+    viewBox: "0 0 512 512"
+  }, React.createElement("title", null, "Options"), React.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "32",
+    d: "M368 128h80M64 128h240M368 384h80M64 384h240M208 256h240M64 256h80"
+  }), React.createElement("circle", {
+    cx: "336",
+    cy: "128",
+    r: "32",
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "32"
+  }), React.createElement("circle", {
+    cx: "176",
+    cy: "256",
+    r: "32",
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "32"
+  }), React.createElement("circle", {
+    cx: "336",
+    cy: "384",
+    r: "32",
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "32"
+  }));
 };
 var IconAdd = function({ title }) {
-  return jsx_runtime3.jsx("svg", {
+  return React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     className: "icon icon-add",
-    viewBox: "0 0 512 512",
-    children: [
-      jsx_runtime3.jsx("title", {
-        children: title
-      }),
-      jsx_runtime3.jsx("path", {
-        fill: "none",
-        stroke: "currentColor",
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-        strokeWidth: "32",
-        d: "M256 112v288M400 256H112"
-      })
-    ]
-  });
+    viewBox: "0 0 512 512"
+  }, React.createElement("title", null, title), React.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "32",
+    d: "M256 112v288M400 256H112"
+  }));
 };
 var IconClose = function({ stroke }) {
-  return jsx_runtime3.jsx("svg", {
+  return React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     className: "icon icon-close",
-    viewBox: "0 0 512 512",
-    children: jsx_runtime3.jsx("path", {
-      fill: "none",
-      stroke: stroke !== undefined ? stroke : "currentColor",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeWidth: "32",
-      d: "M368 368L144 144M368 144L144 368"
-    })
-  });
+    viewBox: "0 0 512 512"
+  }, React.createElement("path", {
+    fill: "none",
+    stroke: stroke !== undefined ? stroke : "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "32",
+    d: "M368 368L144 144M368 144L144 368"
+  }));
 };
 var IconMoon = function() {
-  return jsx_runtime3.jsx("svg", {
+  return React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     className: "icon icon-moon",
-    viewBox: "0 0 512 512",
-    children: [
-      jsx_runtime3.jsx("title", {
-        children: "Dark"
-      }),
-      jsx_runtime3.jsx("path", {
-        d: "M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z",
-        fill: "none",
-        stroke: "currentColor",
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-        strokeWidth: "32"
-      })
-    ]
-  });
+    viewBox: "0 0 512 512"
+  }, React.createElement("title", null, "Dark"), React.createElement("path", {
+    d: "M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z",
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "32"
+  }));
 };
 var IconSunny = function() {
-  return jsx_runtime3.jsx("svg", {
+  return React.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     className: "icon icon-sunny",
-    viewBox: "0 0 512 512",
-    children: [
-      jsx_runtime3.jsx("title", {
-        children: "Light"
-      }),
-      jsx_runtime3.jsx("path", {
-        fill: "none",
-        stroke: "currentColor",
-        strokeLinecap: "round",
-        strokeMiterlimit: "10",
-        strokeWidth: "32",
-        d: "M256 48v48M256 416v48M403.08 108.92l-33.94 33.94M142.86 369.14l-33.94 33.94M464 256h-48M96 256H48M403.08 403.08l-33.94-33.94M142.86 142.86l-33.94-33.94"
-      }),
-      jsx_runtime3.jsx("circle", {
-        cx: "256",
-        cy: "256",
-        r: "80",
-        fill: "none",
-        stroke: "currentColor",
-        strokeLinecap: "round",
-        strokeMiterlimit: "10",
-        strokeWidth: "32"
-      })
-    ]
-  });
+    viewBox: "0 0 512 512"
+  }, React.createElement("title", null, "Light"), React.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeMiterlimit: "10",
+    strokeWidth: "32",
+    d: "M256 48v48M256 416v48M403.08 108.92l-33.94 33.94M142.86 369.14l-33.94 33.94M464 256h-48M96 256H48M403.08 403.08l-33.94-33.94M142.86 142.86l-33.94-33.94"
+  }), React.createElement("circle", {
+    cx: "256",
+    cy: "256",
+    r: "80",
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeMiterlimit: "10",
+    strokeWidth: "32"
+  }));
 };
 // src/components/todoModal.jsx
-var jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
 var setText = function(e) {
   const value = e.currentTarget.value;
   TodoModalState.text = value;
   TodoModalDispatch.text(changeState);
 };
 var TodoText = function() {
-  TodoModalDispatch.text = import_react4.useState(true)[1];
-  return jsx_runtime4.jsx("textarea", {
+  TodoModalDispatch.text = import_react2.useState(true)[1];
+  return React.createElement("textarea", {
     name: "text",
     title: "todo text",
     value: TodoModalState.text,
@@ -9020,8 +8894,8 @@ var TodoDateRadio = function({
   onChange,
   TodoModalDispatchName
 }) {
-  TodoModalDispatch.date[TodoModalDispatchName] = import_react4.useState(false)[1];
-  return jsx_runtime4.jsx("input", {
+  TodoModalDispatch.date[TodoModalDispatchName] = import_react2.useState(false)[1];
+  return React.createElement("input", {
     className: "display-none",
     type: "radio",
     checked: value === TodoModalState.date,
@@ -9046,11 +8920,12 @@ var populateTagsSelected = function(tags) {
   for (let i = 0;i < tags.length; i += 1) {
     const tag3 = tags[i];
     TodoModalState.tagsSelected.push(tag3);
-    TMTagsSelectedArray.push(jsx_runtime4.jsx(TagDeleteButton, {
+    TMTagsSelectedArray.push(React.createElement(TagDeleteButton, {
       tag: tag3,
       index: i,
-      onClick: removeTag
-    }, `tag-${tag3}`));
+      onClick: removeTag,
+      key: `tag-${tag3}`
+    }));
   }
 };
 var removeTag = function(e) {
@@ -9069,11 +8944,12 @@ var addNewTag = function() {
   if (TodoModalState.newTag !== "") {
     if (!TodoModalState.tagsSelected.includes(TodoModalState.newTag)) {
       TodoModalState.tagsSelected.push(TodoModalState.newTag);
-      TMTagsSelectedArray.push(jsx_runtime4.jsx(TagDeleteButton, {
+      TMTagsSelectedArray.push(React.createElement(TagDeleteButton, {
         tag: TodoModalState.newTag,
         index: TMTagsSelectedArray.length,
-        onClick: removeTag
-      }, `tag-${TodoModalState.newTag}`));
+        onClick: removeTag,
+        key: `tag-${TodoModalState.newTag}`
+      }));
       TodoModalDispatch.tagsSelected(changeState);
     }
     TodoModalState.newTag = "";
@@ -9115,10 +8991,11 @@ var onChangeTagsInput = function(e) {
         for (const tag3 in TagsState.tags) {
           if (value === tag3[0]) {
             TodoModalState.tagsSuggested.push(tag3);
-            TMTagsSuggestedArray.push(jsx_runtime4.jsx(TagAddButton, {
+            TMTagsSuggestedArray.push(React.createElement(TagAddButton, {
               tag: tag3,
-              onClick: selectSuggestedTag
-            }, `tag-${tag3}`));
+              onClick: selectSuggestedTag,
+              key: `tag-${tag3}`
+            }));
             TMSuggestedTemporal.tags.push(tag3);
             TMSuggestedTemporal.react.push(TMTagsSuggestedArray[i]);
             i += 1;
@@ -9163,8 +9040,8 @@ var onEnterTagsInput = function(e) {
   }
 };
 var TagInput = function() {
-  TodoModalDispatch.newTag = import_react4.useState(true)[1];
-  return jsx_runtime4.jsx("input", {
+  TodoModalDispatch.newTag = import_react2.useState(true)[1];
+  return React.createElement("input", {
     name: "tag",
     type: "text",
     value: TodoModalState.newTag,
@@ -9174,32 +9051,24 @@ var TagInput = function() {
   });
 };
 var RemoveTagsSection = function() {
-  TodoModalDispatch.tagsSelected = import_react4.useState(true)[1];
+  TodoModalDispatch.tagsSelected = import_react2.useState(true)[1];
   if (TodoModalState.tagsSelected.length === 0) {
     return;
   }
-  return jsx_runtime4.jsx("section", {
-    className: "tags-selected-section",
-    children: [
-      jsx_runtime4.jsx("p", {
-        children: "Remove tags:"
-      }),
-      jsx_runtime4.jsx("div", {
-        className: "tags-selected",
-        children: TMTagsSelectedArray
-      })
-    ]
-  });
+  return React.createElement("section", {
+    className: "tags-selected-section"
+  }, React.createElement("p", null, "Remove tags:"), React.createElement("div", {
+    className: "tags-selected"
+  }, TMTagsSelectedArray));
 };
 var TagsSuggested = function() {
-  TodoModalDispatch.tagsSuggested = import_react4.useState(true)[1];
+  TodoModalDispatch.tagsSuggested = import_react2.useState(true)[1];
   if (TMTagsSuggestedArray.length === 0) {
     return;
   }
-  return jsx_runtime4.jsx("div", {
-    className: "suggested-tags",
-    children: TMTagsSuggestedArray
-  });
+  return React.createElement("div", {
+    className: "suggested-tags"
+  }, TMTagsSuggestedArray);
 };
 var TodoModal = function({
   title,
@@ -9208,107 +9077,52 @@ var TodoModal = function({
   onClickComplete,
   completeText
 }) {
-  return jsx_runtime4.jsx("div", {
-    className: "todo-parent",
-    children: [
-      jsx_runtime4.jsx("button", {
-        type: "button",
-        className: "close-button",
-        title: "close",
-        onClick: onClickClose,
-        children: jsx_runtime4.jsx(IconClose, {})
-      }),
-      jsx_runtime4.jsx("h3", {
-        className: "todo title",
-        children: title
-      }),
-      jsx_runtime4.jsx("section", {
-        className: "section todo text-section",
-        children: [
-          jsx_runtime4.jsx("h4", {
-            children: "What do you need to do?"
-          }),
-          jsx_runtime4.jsx(TodoText, {})
-        ]
-      }),
-      editmode && jsx_runtime4.jsx("section", {
-        className: "section todo date-section",
-        children: [
-          jsx_runtime4.jsx("h4", {
-            children: "Set date to now:"
-          }),
-          jsx_runtime4.jsx("div", {
-            children: [
-              jsx_runtime4.jsx("label", {
-                className: "radio",
-                children: [
-                  jsx_runtime4.jsx(TodoDateRadio, {
-                    value: false,
-                    onChange: setDate.toFalse,
-                    TodoModalDispatchName: "false"
-                  }),
-                  jsx_runtime4.jsx("p", {
-                    children: "No"
-                  })
-                ]
-              }),
-              jsx_runtime4.jsx("label", {
-                className: "radio",
-                children: [
-                  jsx_runtime4.jsx(TodoDateRadio, {
-                    value: true,
-                    onChange: setDate.toTrue,
-                    TodoModalDispatchName: "true"
-                  }),
-                  jsx_runtime4.jsx("p", {
-                    children: "Yes"
-                  })
-                ]
-              })
-            ]
-          })
-        ]
-      }),
-      jsx_runtime4.jsx("section", {
-        className: "section todo color-section",
-        children: [
-          jsx_runtime4.jsx("h4", {
-            children: "Select Color:"
-          }),
-          jsx_runtime4.jsx(color_default, {
-            check: checkColor,
-            onChange: setColor,
-            dispatch: TodoModalDispatch.color,
-            type: "radio"
-          })
-        ]
-      }),
-      jsx_runtime4.jsx("section", {
-        className: "section todo tags-section",
-        children: [
-          jsx_runtime4.jsx("h4", {
-            children: "Tags:"
-          }),
-          jsx_runtime4.jsx(TagSection, {
-            TagInput: jsx_runtime4.jsx(TagInput, {}),
-            TagsSuggested: jsx_runtime4.jsx(TagsSuggested, {}),
-            addButton: true,
-            addNewTag
-          })
-        ]
-      }),
-      jsx_runtime4.jsx(RemoveTagsSection, {}),
-      jsx_runtime4.jsx("div", {
-        className: "complete-button-parent",
-        children: jsx_runtime4.jsx("button", {
-          type: "button",
-          className: "complete-button",
-          onClick: onClickComplete,
-          children: completeText
-        })
-      })
-    ]
-  });
+  return React.createElement("div", {
+    className: "todo-parent"
+  }, React.createElement("button", {
+    type: "button",
+    className: "close-button",
+    title: "close",
+    onClick: onClickClose
+  }, React.createElement(IconClose, null)), React.createElement("h3", {
+    className: "todo title"
+  }, title), React.createElement("section", {
+    className: "section todo text-section"
+  }, React.createElement("h4", null, "What do you need to do?"), React.createElement(TodoText, null)), editmode && React.createElement("section", {
+    className: "section todo date-section"
+  }, React.createElement("h4", null, "Set date to now:"), React.createElement("div", null, React.createElement("label", {
+    className: "radio"
+  }, React.createElement(TodoDateRadio, {
+    value: false,
+    onChange: setDate.toFalse,
+    TodoModalDispatchName: "false"
+  }), React.createElement("p", null, "No")), React.createElement("label", {
+    className: "radio"
+  }, React.createElement(TodoDateRadio, {
+    value: true,
+    onChange: setDate.toTrue,
+    TodoModalDispatchName: "true"
+  }), React.createElement("p", null, "Yes")))), React.createElement("section", {
+    className: "section todo color-section"
+  }, React.createElement("h4", null, "Select Color:"), React.createElement(color_default, {
+    check: checkColor,
+    onChange: setColor,
+    dispatch: TodoModalDispatch.color,
+    type: "radio"
+  })), React.createElement("section", {
+    className: "section todo tags-section"
+  }, React.createElement("h4", null, "Tags:"), React.createElement(TagSection, {
+    TagInput: React.createElement(TagInput, null),
+    TagsSuggested: React.createElement(TagsSuggested, null),
+    addButton: true,
+    addNewTag
+  })), React.createElement(RemoveTagsSection, null), React.createElement("div", {
+    className: "complete-button-parent"
+  }, React.createElement("button", {
+    type: "button",
+    className: "complete-button",
+    onClick: onClickComplete
+  }, completeText)));
 };
 var addComplete = function() {
   if (TodoModalState.text === "") {
@@ -9317,7 +9131,7 @@ var addComplete = function() {
   ModalActions.addCompleted(TodoModalState.text, TodoModalState.color, TodoModalState.tagsSelected);
 };
 var AddTodoModal = function() {
-  return jsx_runtime4.jsx(TodoModal, {
+  return React.createElement(TodoModal, {
     title: "New Todo",
     editmode: false,
     onClickClose: ModalActions.close,
@@ -9332,7 +9146,7 @@ var editComplete = function() {
   ModalActions.editComplete(TodoModalState.date, TodoModalState.text, TodoModalState.color, TodoModalState.tagsSelected);
 };
 var EditTodoModal = function() {
-  return jsx_runtime4.jsx(TodoModal, {
+  return React.createElement(TodoModal, {
     title: "Edit Todo",
     editmode: true,
     onClickClose: ModalActions.close,
@@ -9348,14 +9162,13 @@ var openAdd = function() {
   ModalActions.openAdd();
 };
 var AddTodoButton = function({ className }) {
-  return jsx_runtime4.jsx("button", {
+  return React.createElement("button", {
     type: "button",
     className,
-    onClick: openAdd,
-    children: jsx_runtime4.jsx(IconAdd, {
-      title: "Add a new todo"
-    })
-  });
+    onClick: openAdd
+  }, React.createElement(IconAdd, {
+    title: "Add a new todo"
+  }));
 };
 var openEdit = function(e) {
   const id2 = e.currentTarget.getAttribute("data-id");
@@ -9373,15 +9186,12 @@ var openEdit = function(e) {
   }
 };
 var EditTodoButton = function({ id: id2 }) {
-  return jsx_runtime4.jsx("button", {
+  return React.createElement("button", {
     type: "button",
     title: "edit todo",
     "data-id": id2,
-    onClick: openEdit,
-    children: jsx_runtime4.jsx("p", {
-      children: "edit"
-    })
-  });
+    onClick: openEdit
+  }, React.createElement("p", null, "edit"));
 };
 var TodoModalState = {
   color: "default",
@@ -9444,7 +9254,6 @@ var TMSuggestedTemporal = {
   }
 };
 // src/components/todoItem.jsx
-var jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
 var deleteTodo = function(e) {
   const id2 = e.currentTarget.getAttribute("data-id");
   if (id2 !== null) {
@@ -9458,81 +9267,56 @@ var toggleCompleted = function(e) {
   }
 };
 var forEachTag = function(tag4) {
-  return jsx_runtime5.jsx(Tag, {
-    text: tag4
-  }, `${this}-tag-${tag4}`);
+  return React.createElement(Tag, {
+    text: tag4,
+    key: `${this}-tag-${tag4}`
+  });
 };
 var Todo = function({ id: id2 }) {
-  TodosState.todosDispatch[id2] = import_react5.useState(false)[1];
+  TodosState.todosDispatch[id2] = import_react3.useState(false)[1];
   const todo = TodosState.todos[id2];
   const styleVars = {
     "--color": `var(--color-${todo.color})`,
     "--right-background-color": `var(--color-${todo.color})`
   };
   const todoClassName = todo.completed ? TODO_CLASS_NAME + " completed" : TODO_CLASS_NAME;
-  return jsx_runtime5.jsx("div", {
+  return React.createElement("div", {
     className: todoClassName,
-    style: styleVars,
-    children: [
-      jsx_runtime5.jsx("div", {
-        className: "left",
-        children: [
-          jsx_runtime5.jsx("div", {
-            className: "todo-header",
-            children: [
-              jsx_runtime5.jsx("p", {
-                children: DateTimeFormatter.format(todo.date)
-              }),
-              todo.completed ? jsx_runtime5.jsx("button", {
-                type: "button",
-                "aria-label": "delete",
-                title: "delete todo",
-                "data-id": id2,
-                onClick: deleteTodo,
-                children: jsx_runtime5.jsx(IconClose, {})
-              }) : jsx_runtime5.jsx(EditTodoButton, {
-                id: id2
-              })
-            ]
-          }),
-          jsx_runtime5.jsx("div", {
-            className: "todo-main",
-            children: jsx_runtime5.jsx("p", {
-              children: todo.text
-            })
-          }),
-          todo.tags.length > 0 && jsx_runtime5.jsx("div", {
-            className: "todo-footer",
-            children: Array.from(todo.tags, forEachTag, id2)
-          })
-        ]
-      }),
-      jsx_runtime5.jsx("div", {
-        className: "right",
-        children: jsx_runtime5.jsx("button", {
-          type: "button",
-          "aria-label": "toggle completed",
-          title: todo.completed ? "mark as non completed" : "mark as competed",
-          "data-id": id2,
-          onClick: toggleCompleted,
-          children: jsx_runtime5.jsx("svg", {
-            xmlns: "http://www.w3.org/2000/svg",
-            fill: "currentColor",
-            className: "icon icon-check-square",
-            viewBox: "0 0 16 16",
-            children: [
-              jsx_runtime5.jsx("path", {
-                d: "M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
-              }),
-              todo.completed && jsx_runtime5.jsx("path", {
-                d: "M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z"
-              })
-            ]
-          })
-        })
-      })
-    ]
-  });
+    style: styleVars
+  }, React.createElement("div", {
+    className: "left"
+  }, React.createElement("div", {
+    className: "todo-header"
+  }, React.createElement("p", null, DateTimeFormatter.format(todo.date)), todo.completed ? React.createElement("button", {
+    type: "button",
+    "aria-label": "delete",
+    title: "delete todo",
+    "data-id": id2,
+    onClick: deleteTodo
+  }, React.createElement(IconClose, null)) : React.createElement(EditTodoButton, {
+    id: id2
+  })), React.createElement("div", {
+    className: "todo-main"
+  }, React.createElement("p", null, todo.text)), todo.tags.length > 0 && React.createElement("div", {
+    className: "todo-footer"
+  }, Array.from(todo.tags, forEachTag, id2))), React.createElement("div", {
+    className: "right"
+  }, React.createElement("button", {
+    type: "button",
+    "aria-label": "toggle completed",
+    title: todo.completed ? "mark as non completed" : "mark as competed",
+    "data-id": id2,
+    onClick: toggleCompleted
+  }, React.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "currentColor",
+    className: "icon icon-check-square",
+    viewBox: "0 0 16 16"
+  }, React.createElement("path", {
+    d: "M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+  }), todo.completed && React.createElement("path", {
+    d: "M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z"
+  })))));
 };
 var DateTimeFormatter = Intl.DateTimeFormat(undefined, {
   dateStyle: "short",
@@ -9542,14 +9326,14 @@ var TODO_CLASS_NAME = "todo-item";
 var todoItem_default = Todo;
 
 // src/components/todoList.jsx
-var jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
 var TodoList = function() {
-  TodosState.selectedDispatch = import_react6.useState(true)[1];
+  TodosState.selectedDispatch = import_react4.useState(true)[1];
   ReactTodosSelected.length = 0;
   for (const todo of TodosState.selected) {
-    ReactTodosSelected.push(jsx_runtime6.jsx(todoItem_default, {
-      id: todo
-    }, todo));
+    ReactTodosSelected.push(React.createElement(todoItem_default, {
+      id: todo,
+      key: todo
+    }));
   }
   return ReactTodosSelected;
 };
@@ -9557,23 +9341,23 @@ var ReactTodosSelected = [];
 var todoList_default = TodoList;
 
 // src/components/filter.jsx
-var import_react7 = __toESM(require_react(), 1);
+var import_react5 = __toESM(require_react(), 1);
 
 // src/onwindowresize.js
-var MatchDispatch = {
-  filterDesktop: fakeDispatch,
-  filterBtn: fakeDispatch
-};
-var MATCH_MIN_WIDTH_780 = window.matchMedia("(min-width: 780px)");
-MATCH_MIN_WIDTH_780.onchange = function mnw780oc(e) {
+var mnw780oc = function(e) {
   MatchDispatch.filterDesktop(changeState);
   MatchDispatch.filterBtn(changeState);
   if (e.matches && ModalState.show && ModalState.type === "filter") {
     ModalActions.close();
   }
 };
+var MatchDispatch = {
+  filterDesktop: fakeDispatch,
+  filterBtn: fakeDispatch
+};
+var MATCH_MIN_WIDTH_780 = window.matchMedia("(min-width: 780px)");
+MATCH_MIN_WIDTH_780.onchange = mnw780oc;
 // src/components/filter.jsx
-var jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
 var setStatus = function(e) {
   const value = e.currentTarget.value;
   const prevVal = FilterState.status;
@@ -9584,8 +9368,8 @@ var setStatus = function(e) {
   }
 };
 var StatusInput = function({ status }) {
-  FilterModalDispatch.status[status] = import_react7.useState(true)[1];
-  return jsx_runtime7.jsx("input", {
+  FilterModalDispatch.status[status] = import_react5.useState(true)[1];
+  return React.createElement("input", {
     className: "display-none",
     type: "radio",
     value: status,
@@ -9594,47 +9378,27 @@ var StatusInput = function({ status }) {
   });
 };
 var StatusContainer = function() {
-  return jsx_runtime7.jsx("div", {
-    className: "status-container",
-    children: [
-      jsx_runtime7.jsx("label", {
-        className: "radio",
-        children: [
-          jsx_runtime7.jsx(StatusInput, {
-            status: "all"
-          }),
-          jsx_runtime7.jsx("p", {
-            title: "All",
-            children: "All"
-          })
-        ]
-      }),
-      jsx_runtime7.jsx("label", {
-        className: "radio",
-        children: [
-          jsx_runtime7.jsx(StatusInput, {
-            status: "active"
-          }),
-          jsx_runtime7.jsx("p", {
-            title: "Active",
-            children: "Active"
-          })
-        ]
-      }),
-      jsx_runtime7.jsx("label", {
-        className: "radio",
-        children: [
-          jsx_runtime7.jsx(StatusInput, {
-            status: "completed"
-          }),
-          jsx_runtime7.jsx("p", {
-            title: "Completed",
-            children: "Completed"
-          })
-        ]
-      })
-    ]
-  });
+  return React.createElement("div", {
+    className: "status-container"
+  }, React.createElement("label", {
+    className: "radio"
+  }, React.createElement(StatusInput, {
+    status: "all"
+  }), React.createElement("p", {
+    title: "All"
+  }, "All")), React.createElement("label", {
+    className: "radio"
+  }, React.createElement(StatusInput, {
+    status: "active"
+  }), React.createElement("p", {
+    title: "Active"
+  }, "Active")), React.createElement("label", {
+    className: "radio"
+  }, React.createElement(StatusInput, {
+    status: "completed"
+  }), React.createElement("p", {
+    title: "Completed"
+  }, "Completed")));
 };
 var setColor2 = function(e) {
   const color4 = e.currentTarget.value;
@@ -9649,8 +9413,9 @@ var checkColor2 = function(color4) {
 var removeTag2 = function(e) {
   const i = e.currentTarget.getAttribute("data-index");
   if (i !== null) {
-    FilterActions.changeTags(FilterModalState.tagsSelected[i], false);
-    for (let j = Number(i);j < FilterModalState.tagsSelected.length - 1; j += 1) {
+    let k2 = Number(i);
+    FilterActions.changeTags(FilterModalState.tagsSelected[k2], false);
+    for (let j = k2;j < FilterModalState.tagsSelected.length - 1; j += 1) {
       FilterModalState.tagsSelected[j] = FilterModalState.tagsSelected[j + 1];
       FTagsSelectedArray[j] = FTagsSelectedArray[j + 1];
     }
@@ -9663,11 +9428,12 @@ var addNewTag2 = function() {
   if (FilterModalState.newTag !== "") {
     if (!FilterModalState.tagsSelected.includes(FilterModalState.newTag)) {
       FilterModalState.tagsSelected.push(FilterModalState.newTag);
-      FTagsSelectedArray.push(jsx_runtime7.jsx(TagDeleteButton, {
+      FTagsSelectedArray.push(React.createElement(TagDeleteButton, {
         tag: FilterModalState.newTag,
         index: FTagsSelectedArray.length,
-        onClick: removeTag2
-      }, `tag-${FilterModalState.newTag}`));
+        onClick: removeTag2,
+        key: `tag-${FilterModalState.newTag}`
+      }));
       FilterModalDispatch.tagsSelected(changeState);
       FilterActions.changeTags(FilterModalState.newTag, true);
     }
@@ -9701,10 +9467,11 @@ var onChangeTagsInput2 = function(e) {
       for (const tag5 in TagsState.tags) {
         if (value === tag5[0]) {
           FilterModalState.tagsSuggested.push(tag5);
-          FTagsSuggestedArray.push(jsx_runtime7.jsx(TagAddButton, {
+          FTagsSuggestedArray.push(React.createElement(TagAddButton, {
             tag: tag5,
-            onClick: selectSuggestedTag2
-          }, `tag-${tag5}`));
+            onClick: selectSuggestedTag2,
+            key: `tag-${tag5}`
+          }));
           i += 1;
         }
       }
@@ -9730,8 +9497,8 @@ var onChangeTagsInput2 = function(e) {
   }
 };
 var TagInput2 = function() {
-  FilterModalDispatch.newTag = import_react7.useState(true)[1];
-  return jsx_runtime7.jsx("input", {
+  FilterModalDispatch.newTag = import_react5.useState(true)[1];
+  return React.createElement("input", {
     name: "tag",
     type: "text",
     value: FilterModalState.newTag,
@@ -9740,147 +9507,82 @@ var TagInput2 = function() {
   });
 };
 var RemoveTagsSection2 = function() {
-  FilterModalDispatch.tagsSelected = import_react7.useState(true)[1];
+  FilterModalDispatch.tagsSelected = import_react5.useState(true)[1];
   if (FilterModalState.tagsSelected.length === 0) {
     return;
   }
-  return jsx_runtime7.jsx("section", {
-    className: "tags-selected-section",
-    children: [
-      jsx_runtime7.jsx("p", {
-        children: "Remove tags:"
-      }),
-      jsx_runtime7.jsx("div", {
-        className: "tags-selected",
-        children: FTagsSelectedArray
-      })
-    ]
-  });
+  return React.createElement("section", {
+    className: "tags-selected-section"
+  }, React.createElement("p", null, "Remove tags:"), React.createElement("div", {
+    className: "tags-selected"
+  }, FTagsSelectedArray));
 };
 var TagsSuggested2 = function() {
-  FilterModalDispatch.tagsSuggested = import_react7.useState(true)[1];
+  FilterModalDispatch.tagsSuggested = import_react5.useState(true)[1];
   if (FTagsSuggestedArray.length === 0) {
     return;
   }
-  return jsx_runtime7.jsx("div", {
-    className: "suggested-tags",
-    children: FTagsSuggestedArray
-  });
+  return React.createElement("div", {
+    className: "suggested-tags"
+  }, FTagsSuggestedArray);
 };
 var Filter = function() {
-  return jsx_runtime7.jsx(jsx_runtime7.Fragment, {
-    children: [
-      jsx_runtime7.jsx("section", {
-        className: "section filter",
-        children: [
-          jsx_runtime7.jsx("h3", {
-            children: "Actions"
-          }),
-          jsx_runtime7.jsx("div", {
-            className: "actions",
-            children: [
-              jsx_runtime7.jsx("button", {
-                type: "button",
-                className: "action-button",
-                onClick: TodoListActions.completeAll,
-                children: jsx_runtime7.jsx("p", {
-                  children: "Mark all as completed"
-                })
-              }),
-              jsx_runtime7.jsx("button", {
-                type: "button",
-                className: "action-button",
-                onClick: TodoListActions.clearCompleted,
-                children: jsx_runtime7.jsx("p", {
-                  children: "Clear completed"
-                })
-              })
-            ]
-          })
-        ]
-      }),
-      jsx_runtime7.jsx("section", {
-        className: "section filter",
-        children: [
-          jsx_runtime7.jsx("h3", {
-            children: "Filter by"
-          }),
-          jsx_runtime7.jsx("section", {
-            className: "section status-section",
-            children: [
-              jsx_runtime7.jsx("h4", {
-                children: "Status:"
-              }),
-              jsx_runtime7.jsx(StatusContainer, {})
-            ]
-          }),
-          jsx_runtime7.jsx("section", {
-            className: "section color-section",
-            children: [
-              jsx_runtime7.jsx("h4", {
-                children: "Colors:"
-              }),
-              jsx_runtime7.jsx(color_default, {
-                dispatch: FilterModalDispatch.color,
-                onChange: setColor2,
-                check: checkColor2,
-                type: "checkbox"
-              })
-            ]
-          }),
-          jsx_runtime7.jsx("section", {
-            className: "section tags-section",
-            children: [
-              jsx_runtime7.jsx("h4", {
-                children: "Tags:"
-              }),
-              jsx_runtime7.jsx(TagSection, {
-                TagInput: jsx_runtime7.jsx(TagInput2, {}),
-                TagsSuggested: jsx_runtime7.jsx(TagsSuggested2, {}),
-                addButton: false
-              })
-            ]
-          }),
-          jsx_runtime7.jsx(RemoveTagsSection2, {})
-        ]
-      })
-    ]
-  });
+  return React.createElement(React.Fragment, null, React.createElement("section", {
+    className: "section filter"
+  }, React.createElement("h3", null, "Actions"), React.createElement("div", {
+    className: "actions"
+  }, React.createElement("button", {
+    type: "button",
+    className: "action-button",
+    onClick: TodoListActions.completeAll
+  }, React.createElement("p", null, "Mark all as completed")), React.createElement("button", {
+    type: "button",
+    className: "action-button",
+    onClick: TodoListActions.clearCompleted
+  }, React.createElement("p", null, "Clear completed")))), React.createElement("section", {
+    className: "section filter"
+  }, React.createElement("h3", null, "Filter by"), React.createElement("section", {
+    className: "section status-section"
+  }, React.createElement("h4", null, "Status:"), React.createElement(StatusContainer, null)), React.createElement("section", {
+    className: "section color-section"
+  }, React.createElement("h4", null, "Colors:"), React.createElement(color_default, {
+    dispatch: FilterModalDispatch.color,
+    onChange: setColor2,
+    check: checkColor2,
+    type: "checkbox"
+  })), React.createElement("section", {
+    className: "section tags-section"
+  }, React.createElement("h4", null, "Tags:"), React.createElement(TagSection, {
+    TagInput: React.createElement(TagInput2, null),
+    TagsSuggested: React.createElement(TagsSuggested2, null),
+    addButton: false
+  })), React.createElement(RemoveTagsSection2, null)));
 };
 var FilterDesktop = function() {
-  MatchDispatch.filterDesktop = import_react7.useState(true)[1];
+  MatchDispatch.filterDesktop = import_react5.useState(true)[1];
   if (!MATCH_MIN_WIDTH_780.matches) {
     return;
   }
-  return jsx_runtime7.jsx("aside", {
-    children: jsx_runtime7.jsx(Filter, {})
-  });
+  return React.createElement("aside", null, React.createElement(Filter, null));
 };
 var FilterModal = function() {
-  return jsx_runtime7.jsx(jsx_runtime7.Fragment, {
-    children: [
-      jsx_runtime7.jsx("button", {
-        type: "button",
-        className: "close-button",
-        title: "close",
-        onClick: ModalActions.close,
-        children: jsx_runtime7.jsx(IconClose, {})
-      }),
-      jsx_runtime7.jsx(Filter, {})
-    ]
-  });
+  return React.createElement(React.Fragment, null, React.createElement("button", {
+    type: "button",
+    className: "close-button",
+    title: "close",
+    onClick: ModalActions.close
+  }, React.createElement(IconClose, null)), React.createElement(Filter, null));
 };
 var FilterButton = function({ className, onClick, children }) {
-  MatchDispatch.filterBtn = import_react7.useState(true)[1];
+  MatchDispatch.filterBtn = import_react5.useState(true)[1];
   if (MATCH_MIN_WIDTH_780.matches) {
     return;
   }
-  return jsx_runtime7.jsx("button", {
+  return React.createElement("button", {
     type: "button",
     className,
-    onClick,
-    children
-  });
+    onClick
+  }, children);
 };
 var FilterModalState = {
   color: {
@@ -9921,8 +9623,7 @@ var FTagsSelectedArray = [];
 var FTagsSuggestedArray = [];
 
 // src/components/changeTheme.jsx
-var import_react8 = __toESM(require_react(), 1);
-var jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
+var import_react6 = __toESM(require_react(), 1);
 var changeTheme = function() {
   if (theme.state === "dark") {
     theme.state = "light";
@@ -9934,16 +9635,15 @@ var changeTheme = function() {
   theme.dispatch(changeState);
 };
 var IconsThemeButton = function() {
-  theme.dispatch = import_react8.useState(false)[1];
-  return theme.state === "dark" ? jsx_runtime8.jsx(IconSunny, {}) : jsx_runtime8.jsx(IconMoon, {});
+  theme.dispatch = import_react6.useState(false)[1];
+  return theme.state === "dark" ? React.createElement(IconSunny, null) : React.createElement(IconMoon, null);
 };
 var ChangeThemeButton = function({ className }) {
-  return jsx_runtime8.jsx("button", {
+  return React.createElement("button", {
     type: "button",
     className,
-    onClick: changeTheme,
-    children: jsx_runtime8.jsx(IconsThemeButton, {})
-  });
+    onClick: changeTheme
+  }, React.createElement(IconsThemeButton, null));
 };
 var theme = {
   state: "dark",
@@ -9966,73 +9666,42 @@ var theme = {
 var changeTheme_default = ChangeThemeButton;
 
 // src/components/modal.jsx
-var import_react9 = __toESM(require_react(), 1);
-var jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
+var import_react7 = __toESM(require_react(), 1);
 var Modal = function() {
-  ModalState.dispatch = import_react9.useState(true)[1];
+  ModalState.dispatch = import_react7.useState(true)[1];
   const display = ModalState.show ? "" : "display-none";
-  const modalChild = ModalState.type === "add" ? jsx_runtime9.jsx(AddTodoModal, {}) : ModalState.type === "edit" ? jsx_runtime9.jsx(EditTodoModal, {}) : jsx_runtime9.jsx(FilterModal, {});
-  return jsx_runtime9.jsx("div", {
-    className: `modal-root ${display}`,
-    children: jsx_runtime9.jsx("div", {
-      id: "modal",
-      className: "modal",
-      children: modalChild
-    })
-  });
+  const modalChild = ModalState.type === "add" ? React.createElement(AddTodoModal, null) : ModalState.type === "edit" ? React.createElement(EditTodoModal, null) : React.createElement(FilterModal, null);
+  return React.createElement("div", {
+    className: `modal-root ${display}`
+  }, React.createElement("div", {
+    id: "modal",
+    className: "modal"
+  }, modalChild));
 };
 var modal_default = Modal;
 // src/components/app.jsx
-var jsx_runtime10 = __toESM(require_jsx_runtime(), 1);
 var App = function() {
-  return jsx_runtime10.jsx(jsx_runtime10.Fragment, {
-    children: [
-      jsx_runtime10.jsx("header", {
-        children: [
-          jsx_runtime10.jsx(FilterButton, {
-            className: "header-button left",
-            onClick: ModalActions.openFilter,
-            children: jsx_runtime10.jsx(IconOptions, {})
-          }),
-          jsx_runtime10.jsx(AddTodoButton, {
-            className: "header-button center"
-          }),
-          jsx_runtime10.jsx(changeTheme_default, {
-            className: "header-button right"
-          })
-        ]
-      }),
-      jsx_runtime10.jsx("div", {
-        className: "container",
-        children: [
-          jsx_runtime10.jsx("main", {
-            children: jsx_runtime10.jsx(todoList_default, {})
-          }),
-          jsx_runtime10.jsx(FilterDesktop, {})
-        ]
-      }),
-      jsx_runtime10.jsx("footer", {
-        children: jsx_runtime10.jsx("p", {
-          children: [
-            "by ",
-            jsx_runtime10.jsx("a", {
-              className: "",
-              href: "https://github.com/AxelArielSaravia/",
-              target: "_blank",
-              rel: "noreferrer noopener",
-              children: "Axel Ariel Saravia"
-            })
-          ]
-        })
-      }),
-      jsx_runtime10.jsx(modal_default, {})
-    ]
-  });
+  return React.createElement(React.Fragment, null, React.createElement("header", null, React.createElement(FilterButton, {
+    className: "header-button left",
+    onClick: ModalActions.openFilter
+  }, React.createElement(IconOptions, null)), React.createElement(AddTodoButton, {
+    className: "header-button center"
+  }), React.createElement(changeTheme_default, {
+    className: "header-button right"
+  })), React.createElement("div", {
+    className: "container"
+  }, React.createElement("main", null, React.createElement(todoList_default, null)), React.createElement(FilterDesktop, null)), React.createElement("footer", null, React.createElement("p", null, "by ", React.createElement("a", {
+    className: "",
+    href: "https://github.com/AxelArielSaravia/",
+    target: "_blank",
+    rel: "noreferrer noopener"
+  }, "Axel Ariel Saravia"))), React.createElement(modal_default, null));
 };
 var app_default = App;
 
 // src/index.jsx
-var jsx_runtime11 = __toESM(require_jsx_runtime(), 1);
 var container = document.getElementById("root");
-var root = $createRoot2(container);
-root.render(jsx_runtime11.jsx(app_default, {}));
+if (container !== null) {
+  const root = $createRoot2(container);
+  root.render(React.createElement(app_default, null));
+}

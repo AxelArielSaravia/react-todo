@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "types": [
+            "bun-types",
+            "web",
+            "react",
+            "react-dom"
+        ],
+
+        "lib": ["ESNext"],
+        "module": "esnext",
+        "target": "esnext",
+
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "moduleDetection": "force",
+        "allowSyntheticDefaultImports": false,
+
+        "jsx": "react",
+        "allowJs": true,
+        "checkJs": true,
+
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+
+        "downlevelIteration": true,
+        "noEmit": true
+    }
+}

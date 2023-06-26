@@ -1,6 +1,3 @@
-//@ts-check
-import React from "react";
-
 import {ModalActions} from "../context.js";
 
 import TodoList from "./todoList.jsx";

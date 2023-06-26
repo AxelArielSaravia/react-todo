@@ -33,3 +33,9 @@ type FilterColors = [
 
 type FilterStatus = "all" | "active" | "completed";
 
+//OVERRIDES
+
+interface Storage {
+    //override
+    getItem(key: "theme"): "dark" | "light" | null
+}

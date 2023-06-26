@@ -1,5 +1,4 @@
-//@ts-check
-import React, {useState} from "react";
+import {useState} from "react";
 
 import {
     FilterState,
@@ -125,7 +124,8 @@ function StatusContainer() {
 /**
 @type {React.ChangeEventHandler<HTMLInputElement>} */
 function setColor(e) {
-    /**@type {Colors} */
+    /**
+    @type {Colors} */
     const color = e.currentTarget.value;
     const v = FilterModalState.color[color];
     FilterActions.changeColors(color, !v);
@@ -155,9 +155,10 @@ const FTagsSuggestedArray = [];
 function removeTag(e) {
     const i = e.currentTarget.getAttribute("data-index");
     if (i !== null) {
-        FilterActions.changeTags(FilterModalState.tagsSelected[i], false);
+        let k = Number(i);
+        FilterActions.changeTags(FilterModalState.tagsSelected[k], false);
         for (
-            let j = Number(i);
+            let j = k;
             j < FilterModalState.tagsSelected.length - 1;
             j += 1
         ) {

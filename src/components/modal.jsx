@@ -1,5 +1,4 @@
-//@ts-check
-import React, {useState} from "react";
+import {useState} from "react";
 
 import  {ModalState} from "../context.js";
 
@@ -7,7 +6,6 @@ import {AddTodoModal, EditTodoModal} from "./todoModal.jsx";
 import {FilterModal} from "./filter.jsx";
 
 import "./modal.css";
-
 
 
 /**

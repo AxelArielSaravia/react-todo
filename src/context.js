@@ -1,5 +1,4 @@
-//@ts-check
-import {fakeDispatch, changeState, createId} from "./utils";
+import {fakeDispatch, changeState, createId} from "./utils.js";
 
 const TodosState = {
     // Keeps Existing Todos Ids

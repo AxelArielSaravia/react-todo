@@ -1,5 +1,4 @@
-//@ts-check
-import React, {useState} from "react";
+import {useState} from "react";
 import {
     TodosState,
     TodoActions,
@@ -39,7 +38,7 @@ function toggleCompleted(e) {
 }
 
 /**
-@type {(This: string, tag: string) => React.ReactElement} */
+@type {(this: string, tag: string) => React.ReactElement} */
 function forEachTag(tag) {
     return <Tag key={`${this}-tag-${tag}`} text={tag}/>;
 }

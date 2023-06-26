@@ -1,6 +1,3 @@
-//@ts-check
-import React from "react";
-
 /**
 @type {() => React.ReactElement} */
 function IconOptions() {

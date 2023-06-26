@@ -1,16 +1,23 @@
 {
-  "name": "minimal-todo-react",
-  "version": "0.1.91",
+  "name": "react-todo",
+  "version": "0.1.0",
+  "type": "module",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "devDependencies": { "esbuild": "^0.18.4" },
+  "devDependencies": {
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@types/web": "^0.0.102",
+    "bun-types": "^0.6.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
   "scripts": {
     "server": "bun server.js",
     "build:dev": "NODE_ENV=development bun build.js",
     "build:prod": "NODE_ENV=production bun build.js"
-  },
-  "module": "index.ts",
-  "type": "module"
+  }
 }

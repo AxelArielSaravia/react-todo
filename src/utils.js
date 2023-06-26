@@ -1,4 +1,3 @@
-//@ts-check
 /**
 @type {React.Dispatch<React.SetStateAction<boolean>>}*/
 function fakeDispatch() {}

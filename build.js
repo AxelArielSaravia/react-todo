@@ -1,5 +1,5 @@
 import {readdirSync, appendFileSync, existsSync, rmSync} from "node:fs";
-import path from "node:path";
+import * as path from "node:path";
 
 const DEFAULT_PATH = path.join(import.meta.dir, "public");
 const SRC_PATH = path.join(import.meta.dir, "src");
