@@ -21,7 +21,7 @@
             "purpose": "any"
         }
     ],
-    "start_url": "./",
+    "start_url": "https://aas-react-todo.web.app",
     "id": "todoApp",
     "display": "standalone",
     "theme_color": "#e4d3d3",
