@@ -1,0 +1,65 @@
+
+.color-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.color-item {
+    padding: 5px;
+}
+
+.color-item input:checked +  .color-view {
+    outline: 3px solid var(--color-transitive-2);
+}
+
+.color-view {
+    width: var(--color-item-length);
+    height: var(--color-item-length);
+    border-radius: var(--border-radius-2);
+    cursor: pointer;
+}
+
+.color-view.default {
+    background-color: var(--color-default);
+}
+.color-view.blue {
+    background-color: var(--color-blue);
+}
+.color-view.purple {
+    background-color: var(--color-purple);
+}
+.color-view.pink {
+    background-color: var(--color-pink);
+}
+.color-view.red {
+    background-color: var(--color-red);
+}
+.color-view.brown {
+    background-color: var(--color-brown);
+}
+.color-view.yellow {
+    background-color: var(--color-yellow);
+}
+.color-view.green {
+    background-color: var(--color-green);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .color-view:hover {
+        opacity: 80%;
+        outline: 2px solid var(--color-transitive-2);
+    }
+}
+
+@media screen and (max-width: 779px) {
+    .color-container {
+        --color-item-length: 20px;
+    }
+}
+
+@media screen and (min-width: 780px) {
+    .color-container {
+        --color-item-length: 30px;
+    }
+}

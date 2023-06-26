@@ -1,0 +1,63 @@
+.add-tags {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.input-tags {
+    position: relative;
+}
+
+.input-tags input {
+    padding: 5px;
+}
+
+.suggested-tags {
+    display: none;
+    position: absolute;
+    width: 100%;
+    max-height: 100px;
+    overflow: auto;
+
+    transform: translateY(4px);
+    background-color: var(--color-transitive-2);
+    border-radius: var(--border-radius-1);
+    padding: 5px;
+}
+
+.input-tags input:focus + .suggested-tags {
+    display: block;
+}
+
+.add-tags .add-button {
+    padding: 2px 4px;
+}
+
+.tag-button {
+    margin: 2px;
+    padding: 2px;
+}
+
+.tag-button span {
+    padding: 0 4px;
+}
+
+.tag {
+    padding: 2px;
+}
+.tag span {
+    border: 1px solid var(--color);
+    border-radius: var(--border-radius-2);
+    padding: 2px 4px;
+}
+
+
+.tags-selected-section>p {
+    padding: 0 10px;
+}
+
+.tags-selected {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}

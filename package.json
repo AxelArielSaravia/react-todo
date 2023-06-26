@@ -1,0 +1,16 @@
+{
+  "name": "minimal-todo-react",
+  "version": "0.1.91",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": { "esbuild": "^0.18.4" },
+  "scripts": {
+    "server": "bun server.js",
+    "build:dev": "NODE_ENV=development bun build.js",
+    "build:prod": "NODE_ENV=production bun build.js"
+  },
+  "module": "index.ts",
+  "type": "module"
+}

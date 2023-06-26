@@ -1,0 +1,47 @@
+.action-button {
+    margin: 5px;
+    padding: 5px;
+}
+
+.filter .status-container {
+    display: flex;
+    align-items:center;
+    flex-wrap: wrap;
+}
+
+.filter .status-section .radio {
+    padding: 0 5px 5px;
+}
+
+@media screen and (min-width: 780px) {
+    .section.filter h4 {
+        padding-bottom: 5px;
+    }
+    .filter .color-section {
+        width: 180px;
+    }
+
+    aside {
+        width: 300px;
+        border-left: 2px solid var(--color-transitive-1);
+    }
+}
+
+@media screen and (max-width: 779px) {
+    .actions {
+        display: flex;
+        flex-wrap:wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 779px) {
+    .filter .status-section,
+    .filter .color-section,
+    .filter .tags-section {
+        display: flex;
+        align-items: center;
+    }
+
+}
