@@ -1,7 +1,7 @@
 import {useState} from "react";
 
-import  {ModalState} from "../context.js";
-
+import {ModalState} from "../context.js";
+import InitModal from "./initModal.jsx";
 import {AddTodoModal, EditTodoModal} from "./todoModal.jsx";
 import {FilterModal} from "./filter.jsx";
 
@@ -15,7 +15,8 @@ function Modal() {
     const display = ModalState.show ? "" : "display-none";
 
     const modalChild = (
-        ModalState.type === "add" ? <AddTodoModal/>
+        ModalState.type === "init" ? <InitModal/>
+        : ModalState.type === "add" ? <AddTodoModal/>
         : ModalState.type === "edit" ? <EditTodoModal/>
         : /*otherwise*/ <FilterModal/>
     );

@@ -181,13 +181,12 @@ const TodosState = {
                 TodosState.selected.length = head;
             }
         }
-}
-
+    }
 };
 
 const ModalState = {
     /**
-    @type {"edit" | "add" | "filter"} */
+    @type {"edit" | "add" | "filter" | "init"} */
     type: "edit",
     /**
     @type {boolean} */
@@ -697,6 +696,14 @@ const ModalActions = {
     },
     /**
     @type {() => undefined} */
+    completeInit() {
+        ModalState.show = false;
+        removeRootOverflow();
+        localStorage.setItem("show-init", "false");
+        ModalState.dispatch(changeState);
+    },
+    /**
+    @type {() => undefined} */
     close() {
         ModalState.show = false;
         removeRootOverflow();
@@ -743,6 +750,16 @@ const ModalActions = {
     for (const id of TodosState.ids) {
         const todo = TodosState.todos[id];
         TagsState.addTags(todo.tags);
+    }
+}
+{ // init Modal
+    const showInit = localStorage.getItem("show-init");
+    if (showInit === null || showInit === "true") {
+        ModalState.show = true;
+        ModalState.type = "init";
+        localStorage.setItem("show-init", "true");
+    } else {
+        localStorage.setItem("show-init", "false");
     }
 }
 // Init Selected Todos

@@ -5,7 +5,6 @@ import App from "./components/app.jsx";
 
 import "./context.js";
 
-
 const container = document.getElementById("root");
 if (container !== null) {
     const root = createRoot(container);

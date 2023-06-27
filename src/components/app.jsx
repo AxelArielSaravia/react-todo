@@ -9,6 +9,8 @@ import {IconOptions} from "./icons.jsx";
 
 import "./app.css";
 
+/**
+@type {() => React.ReactElement} */
 function App() {
     return (
         <>
