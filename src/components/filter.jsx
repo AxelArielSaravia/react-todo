@@ -1,3 +1,4 @@
+import * as React from "react";
 import {useState} from "react";
 
 import {
@@ -88,7 +89,7 @@ function StatusInput({status}) {
     FilterModalDispatch.status[status] = useState(true)[1];
     return (
         <input
-            className="display-none"
+            className="visual-hidden"
             type="radio"
             value={status}
             checked={FilterState.status === status}

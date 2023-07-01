@@ -11,6 +11,8 @@ const statSync_OPTIONS = {bigint: false, throwIfNoEntry: false};
 
 const badResponse = new Response("File not found", response_OPTIONS);
 
+
+console.info("Watch:", DIR);
 const server = Bun.serve({
     port: PORT,
     fetch(request) {
@@ -20,6 +22,7 @@ const server = Bun.serve({
             reqPath = "/index.html";
         }
         const basePath = path.join(DIR, reqPath);
+        console.info("file path:", basePath);
         let stat;
         try {
             stat = statSync(basePath, statSync_OPTIONS);
@@ -34,4 +37,4 @@ const server = Bun.serve({
     }
 });
 
-console.log(`Server listening on http://localhost:${server.port}`);
+console.info(`Server listening on http://localhost:${server.port}`);

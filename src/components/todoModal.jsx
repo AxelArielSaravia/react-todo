@@ -1,3 +1,4 @@
+import * as React from "react";
 import {useState} from "react";
 
 import {fakeDispatch, changeState} from "../utils.js";
@@ -127,7 +128,7 @@ function TodoDateRadio({
     TodoModalDispatch.date[TodoModalDispatchName] = useState(false)[1];
     return (
         <input
-            className="display-none"
+            className="visual-hidden"
             type="radio"
             checked={value === TodoModalState.date}
             onChange={onChange}

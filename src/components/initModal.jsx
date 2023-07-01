@@ -1,3 +1,4 @@
+import * as React from "react";
 import {ModalActions} from "../context.js";
 
 import {IconClose} from "./icons.jsx";

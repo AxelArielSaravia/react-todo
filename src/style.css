@@ -7,6 +7,7 @@
 }
 
 .dark {
+    --color-system-contrast: white;
     --color-primary: #181616;
     --color-secondary: #e4d3d3;
     --color-transitive-1: #2e2929;
@@ -25,6 +26,7 @@
 }
 
 .light {
+    --color-system-contrast: black;
     --color-primary: #e4d3d3;
     --color-secondary: #131212;
     --color-transitive-1: #cfbcbc;
@@ -55,11 +57,12 @@ html {
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     width: 100%;
     height: 100%;
 
-    font-family: Verdana, sans-serif;
+    font-family: verdana, sans-serif;
 
     font-weight: normal;
 
@@ -71,10 +74,6 @@ body {
 
     background-color:var(--color-primary);
     color: var(--color-secondary);
-}
-
-main {
-    display: block;
 }
 
 a {
@@ -175,6 +174,10 @@ span {
     padding: 5px;
 }
 
+.radio:focus-within p {
+    border: 2px solid var(--color-system-contrast) !important;
+}
+
 .radio input:checked + p {
     background-color: var(--color-transitive-2);
     border-color: var(--color-transitive-2);
@@ -197,6 +200,16 @@ span {
 
 .section h3 {
     padding: 5px 0;
+}
+
+.visual-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
 /* hover */

@@ -10,7 +10,7 @@
     left: 0;
     background-color: var(--color-transitive-2-alpha);
     z-index: var(--z-index-mid);
-    
+
     overflow: auto;
 }
 

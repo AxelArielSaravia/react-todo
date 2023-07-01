@@ -1,6 +1,8 @@
 import {readdirSync, appendFileSync, existsSync, rmSync} from "node:fs";
 import * as path from "node:path";
 
+console.info("global dir:", import.meta.dir);
+
 const DEFAULT_PATH = path.join(import.meta.dir, "public");
 const SRC_PATH = path.join(import.meta.dir, "src");
 const BUILD_PATH = path.join(import.meta.dir, "build");
@@ -14,7 +16,7 @@ const rmOptions = {
 const production_build = {
     entrypoints: ["./src/index.jsx"],
     outdir: BUILD_PATH,
-    minify: true
+    minify: true,
 };
 
 const development_build = {
@@ -27,12 +29,11 @@ if (existsSync(BUILD_PATH)) {
 }
 
 const build = await Bun.build(
-    Bun.env.production ? production_build
+    Bun.env.NODE_ENV === "production" ? production_build
     : /*otherwise*/ development_build
 );
 
 if (!build.success) {
-    console.log(build);
     throw Error("The build fails");
 }
 
@@ -61,3 +62,5 @@ for await (const filepath of dir) {
     }
 }
 
+
+console.info("Build success");

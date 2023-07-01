@@ -1,3 +1,4 @@
+import * as React from "react";
 import {ModalActions} from "../context.js";
 
 import TodoList from "./todoList.jsx";
@@ -14,6 +15,7 @@ import "./app.css";
 function App() {
     return (
         <>
+            <h1 className="visual-hidden">React Todo App</h1>
             <header>
                 <FilterButton
                     className="header-button left"

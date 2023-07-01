@@ -1,3 +1,4 @@
+import * as React from "react";
 import {useState} from "react";
 
 import "./color.css";
@@ -21,7 +22,7 @@ function Color({
     return (
         <label className="color-item">
             <input
-                className="display-none"
+                className="visual-hidden"
                 type={type}
                 value={color}
                 checked={check(color)}

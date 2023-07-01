@@ -45,6 +45,10 @@
     background-color: var(--color-green);
 }
 
+.color-item:focus-within .color-view {
+    border: 2px solid var(--color-system-contrast) !important;
+}
+
 @media (hover: hover) and (pointer: fine) {
     .color-view:hover {
         opacity: 80%;
