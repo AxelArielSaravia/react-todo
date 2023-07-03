@@ -12,7 +12,6 @@ const rmOptions = {
     force: true
 };
 
-
 const production_build = {
     entrypoints: ["./src/index.jsx"],
     outdir: BUILD_PATH,
@@ -29,9 +28,11 @@ if (existsSync(BUILD_PATH)) {
 }
 
 const build = await Bun.build(
-    Bun.env.NODE_ENV === "production" ? production_build
-    : /*otherwise*/ development_build
+    Bun.env.NODE_ENV === "production"
+    ? production_build
+    : development_build
 );
+
 
 if (!build.success) {
     throw Error("The build fails");

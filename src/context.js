@@ -209,15 +209,25 @@ const FilterState = {
     tags: [],
     /**
     @type {(tags: Array<string>) => boolean} */
-    includeSomeTag(tags) {
-        for (const filterTag of FilterState.tags) {
-            for (const tag of tags) {
-                if (tag === filterTag) {
-                    return true;
+    includeTags(tags) {
+        let end = tags.length;
+        if (end < FilterState.tags.length) {
+            return false;
+        }
+        let ctag = "";
+        outer: for (const ftag of FilterState.tags) {
+            for (let i = 0; i < end; i += 1) {
+                ctag = tags[i];
+                if (ctag === ftag) {
+                    tags[i] = tags[end - 1];
+                    tags[end - 1] = ctag;
+                    end -= 1;
+                    continue outer;
                 }
             }
+            return false;
         }
-        return false;
+        return true;
     },
     /**
     @type {(color: Colors) => boolean} */
@@ -261,7 +271,6 @@ const TagsState = {
             if (TagsState.tags[tag] !== undefined) {
                 TagsState.tags[tag] -= 1;
                 if (TagsState.tags[tag] === 0) {
-
                     delete TagsState.tags[tag];
                 }
             }
@@ -430,7 +439,7 @@ const TodoListActions = {
                 FilterState.tags.length > 0
                 && (
                     newTodo.tags.length === 0
-                    || !FilterState.includeSomeTag(newTodo.tags)
+                    || !FilterState.includeTags(newTodo.tags)
                 )
             ) {
                 return;
@@ -438,7 +447,6 @@ const TodoListActions = {
             TodosState.selected.push(id);
             TodosState.selectedDispatch(changeState);
         }
-
     },
     /**
     @type {() => undefined} */
