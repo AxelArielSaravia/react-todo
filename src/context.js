@@ -52,32 +52,32 @@ const TodosState = {
     /**
     @type {(id: string) => boolean} */
     removeTodo(id) {
-        let i = TodosState.ids.indexOf(id);
-        if (i !== -1) {
-            delete TodosState.todos[id];
-            delete TodosState.todosDispatch[id];
-
-            for (; i < TodosState.ids.length - 1; i += 1) {
-                TodosState.ids[i] = TodosState.ids[i + 1];
-            }
-            TodosState.ids.pop();
-            return true;
+        const ids = TodosState.ids;
+        let i = ids.indexOf(id);
+        if (i === -1) {
+            return false;
         }
-        return false;
+        delete TodosState.todos[id];
+        delete TodosState.todosDispatch[id];
+        if (i !== ids.length - 1) {
+            ids.copyWithin(i, i + 1, ids.length);
+        }
+        ids.pop();
+        return true;
     },
     /**
     @type {(id: string) => boolean} */
     removeSelected(id) {
-        let i = TodosState.selected.indexOf(id);
-        if (i !== -1) {
-            const selected = TodosState.selected;
-            for (; i < selected.length - 1; i += 1) {
-                selected[i] = selected[i + 1];
-            }
-            TodosState.selected.pop();
-            return true;
+        const selected = TodosState.selected;
+        let i = selected.indexOf(id);
+        if (i === -1) {
+            return false;
         }
-        return false;
+        if (i !== selected.length - 1) {
+            selected.copyWithin(i, i + 1, selected.length);
+        }
+        selected.pop();
+        return true;
     },
     /**
     @type {(color: Colors) => undefined} */
