@@ -246,6 +246,267 @@ textarea {
     }
 }
 
+.action-button {
+    margin: 5px;
+    padding: 5px;
+}
+
+.filter .status-container {
+    display: flex;
+    align-items:center;
+    flex-wrap: wrap;
+}
+
+.filter .status-section .radio {
+    padding: 0 5px 5px;
+}
+
+@media screen and (min-width: 780px) {
+    .section.filter h4 {
+        padding-bottom: 5px;
+    }
+    .filter .color-section {
+        width: 180px;
+    }
+
+    aside {
+        width: 300px;
+        border-left: 2px solid var(--color-transitive-1);
+    }
+}
+
+@media screen and (max-width: 779px) {
+    .actions {
+        display: flex;
+        flex-wrap:wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 779px) {
+    .filter .status-section,
+    .filter .color-section,
+    .filter .tags-section {
+        display: flex;
+        align-items: center;
+    }
+
+}
+.todo-parent {
+    --section-padding: 10px;
+    --color: var(--color-secondary)
+}
+.todo.title {
+    padding: var(--section-padding);
+}
+
+.section.todo h4 {
+    padding-bottom: 5px;
+}
+
+.todo.text-section textarea {
+    width: 100%;
+    max-height: 200px;
+    min-height: 50px;
+    resize: vertical;
+    padding: var(--section-padding);
+}
+
+.todo.date-section div {
+    display: flex;
+    align-items: center;
+}
+
+.complete-button-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.complete-button {
+    font-weight: bold;
+    font-size: 1.7em;
+    padding: 5px;
+}
+.todo-item {
+    display: flex;
+    flex-direction: row;
+    min-width: 240px;
+    max-width: 450px;
+    height: min-content;
+    margin: 10px;
+    transition: all .5s ease-out;
+}
+
+.todo-item.completed {
+    opacity: 80%;
+}
+
+.todo-item .left {
+    color: var(--color);
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--color);
+    border-top-left-radius: var(--border-radius-2);
+    border-bottom-left-radius: var(--border-radius-2);
+}
+
+.todo-header {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.todo-header button {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    position:absolute;
+    right: 0;
+    font-size: unset;
+    color: var(--color);
+}
+
+.todo-header button p {
+    padding: 2px 4px;
+}
+
+
+.todo-item .right button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    padding: 5px;
+    background-color: var(--right-background-color);
+    color: var(--color-transitive-1);
+    border-radius: unset;
+    border-top-right-radius: var(--border-radius-2);
+    border-bottom-right-radius: var(--border-radius-2);
+}
+
+.todo-item .right button .icon {
+    width: 30px;
+}
+
+.todo-footer {
+    display: flex;
+    padding-top: 10px;
+}
+
+@media screen and (max-width: 779px) {
+    .todo-item {
+        width: 100%;
+    }
+}
+header {
+    --header-padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-index-mid);
+    padding-top: var(--header-padding);
+    padding-bottom: var(--header-padding);
+}
+
+.header-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.header-button:not(.center) {
+    width: 30px;
+    position: absolute;
+}
+
+.header-button.center {
+    width: 40px;
+}
+/*
+ * The +5px are the difference between
+ * the header-button.center width and the others header-buttons.
+ */
+.header-button.left {
+    left: calc(var(--header-padding) + 5px);
+}
+
+.header-button.right {
+    right: calc(var(--header-padding) + 5px);
+}
+
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    width: 100%
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+@media screen and (min-width: 780px) {
+    main {
+        flex-direction: row;
+        align-content: flex-start;
+    }
+}
+@media screen and (max-width: 779px) {
+    main {
+        flex-direction: column;
+        align-content: center;
+    }
+}
+.modal-root:not(.display-none) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: var(--color-transitive-2-alpha);
+    z-index: var(--z-index-mid);
+
+    overflow: auto;
+}
+
+.modal {
+    width: 100%;
+    max-width: 380px;
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius-2);
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+}
+
 .add-tags {
     display: flex;
     justify-content: center;
@@ -376,266 +637,5 @@ textarea {
 @media screen and (min-width: 780px) {
     .color-container {
         --color-item-length: 30px;
-    }
-}
-.todo-parent {
-    --section-padding: 10px;
-    --color: var(--color-secondary)
-}
-.todo.title {
-    padding: var(--section-padding);
-}
-
-.section.todo h4 {
-    padding-bottom: 5px;
-}
-
-.todo.text-section textarea {
-    width: 100%;
-    max-height: 200px;
-    min-height: 50px;
-    resize: vertical;
-    padding: var(--section-padding);
-}
-
-.todo.date-section div {
-    display: flex;
-    align-items: center;
-}
-
-.complete-button-parent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
-}
-
-.complete-button {
-    font-weight: bold;
-    font-size: 1.7em;
-    padding: 5px;
-}
-.todo-item {
-    display: flex;
-    flex-direction: row;
-    min-width: 240px;
-    max-width: 450px;
-    height: min-content;
-    margin: 10px;
-    transition: all .5s ease-out;
-}
-
-.todo-item.completed {
-    opacity: 80%;
-}
-
-.todo-item .left {
-    color: var(--color);
-    width: 100%;
-    padding: 10px;
-    border: 2px solid var(--color);
-    border-top-left-radius: var(--border-radius-2);
-    border-bottom-left-radius: var(--border-radius-2);
-}
-
-.todo-header {
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.todo-header button {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 20px;
-    position:absolute;
-    right: 0;
-    font-size: unset;
-    color: var(--color);
-}
-
-.todo-header button p {
-    padding: 2px 4px;
-}
-
-
-.todo-item .right button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 100%;
-    padding: 5px;
-    background-color: var(--right-background-color);
-    color: var(--color-transitive-1);
-    border-radius: unset;
-    border-top-right-radius: var(--border-radius-2);
-    border-bottom-right-radius: var(--border-radius-2);
-}
-
-.todo-item .right button .icon {
-    width: 30px;
-}
-
-.todo-footer {
-    display: flex;
-    padding-top: 10px;
-}
-
-@media screen and (max-width: 779px) {
-    .todo-item {
-        width: 100%;
-    }
-}
-.action-button {
-    margin: 5px;
-    padding: 5px;
-}
-
-.filter .status-container {
-    display: flex;
-    align-items:center;
-    flex-wrap: wrap;
-}
-
-.filter .status-section .radio {
-    padding: 0 5px 5px;
-}
-
-@media screen and (min-width: 780px) {
-    .section.filter h4 {
-        padding-bottom: 5px;
-    }
-    .filter .color-section {
-        width: 180px;
-    }
-
-    aside {
-        width: 300px;
-        border-left: 2px solid var(--color-transitive-1);
-    }
-}
-
-@media screen and (max-width: 779px) {
-    .actions {
-        display: flex;
-        flex-wrap:wrap;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
-@media (min-width: 400px) and (max-width: 779px) {
-    .filter .status-section,
-    .filter .color-section,
-    .filter .tags-section {
-        display: flex;
-        align-items: center;
-    }
-
-}
-.modal-root:not(.display-none) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background-color: var(--color-transitive-2-alpha);
-    z-index: var(--z-index-mid);
-
-    overflow: auto;
-}
-
-.modal {
-    width: 100%;
-    max-width: 380px;
-    background-color: var(--color-primary);
-    border-radius: var(--border-radius-2);
-    position: relative;
-    padding: 10px;
-    margin: 10px;
-}
-
-header {
-    --header-padding: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-primary);
-    position: sticky;
-    top: 0;
-    z-index: var(--z-index-mid);
-    padding-top: var(--header-padding);
-    padding-bottom: var(--header-padding);
-}
-
-.header-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px;
-}
-
-.header-button:not(.center) {
-    width: 30px;
-    position: absolute;
-}
-
-.header-button.center {
-    width: 40px;
-}
-/*
- * The +5px are the difference between
- * the header-button.center width and the others header-buttons.
- */
-.header-button.left {
-    left: calc(var(--header-padding) + 5px);
-}
-
-.header-button.right {
-    right: calc(var(--header-padding) + 5px);
-}
-
-.container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    width: 100%
-}
-
-main {
-    flex-grow: 1;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 10px;
-}
-
-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
-}
-
-@media screen and (min-width: 780px) {
-    main {
-        flex-direction: row;
-        align-content: flex-start;
-    }
-}
-@media screen and (max-width: 779px) {
-    main {
-        flex-direction: column;
-        align-content: center;
     }
 }

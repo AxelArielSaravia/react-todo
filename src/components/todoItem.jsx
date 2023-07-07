@@ -10,8 +10,6 @@ import {Tag} from "./tag.jsx";
 import {EditTodoButton} from "./todoModal.jsx";
 import {IconClose} from "./icons.jsx";
 
-import "./todoItem.css"
-
 const DateTimeFormatter = Intl.DateTimeFormat(
     undefined,
     {

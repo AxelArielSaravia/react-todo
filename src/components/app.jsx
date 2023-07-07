@@ -8,8 +8,6 @@ import Modal from "./modal.jsx";
 import {AddTodoButton} from "./todoModal.jsx";
 import {IconOptions} from "./icons.jsx";
 
-import "./app.css";
-
 /**
 @type {() => React.ReactElement} */
 function App() {

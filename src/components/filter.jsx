@@ -16,9 +16,6 @@ import {TagDeleteButton, TagAddButton, TagSection} from "./tag.jsx";
 import ColorContainer from "./color.jsx";
 import {IconClose} from "./icons.jsx";
 
-import "./filter.css";
-
-
 const FilterModalState = {
     // WARNNING:
     // if exist a filter state in localstorage this object need to be updated

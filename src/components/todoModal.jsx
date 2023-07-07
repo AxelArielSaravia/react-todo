@@ -13,8 +13,6 @@ import {
 
 import {IconClose, IconAdd} from "./icons.jsx";
 
-import "./todoModal.css";
-
 const TodoModalState = {
     /**
     @type {Colors} */

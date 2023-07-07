@@ -6,9 +6,6 @@ import InitModal from "./initModal.jsx";
 import {AddTodoModal, EditTodoModal} from "./todoModal.jsx";
 import {FilterModal} from "./filter.jsx";
 
-import "./modal.css";
-
-
 /**
 @type {() => React.ReactElement} */
 function Modal() {
