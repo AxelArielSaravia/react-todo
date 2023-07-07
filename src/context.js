@@ -83,7 +83,9 @@ const TodosState = {
     @type {(color: Colors) => undefined} */
     filterByColor(color) {
         let head = 0;
-        for (const id of TodosState.selected) {
+        let id = "";
+        for (let i = 0; i < TodosState.selected.length; i += 1) {
+            id = TodosState.selected[i];
             if (TodosState.todos[id].color === color) {
                 TodosState.selected[head] = id;
                 head += 1;
@@ -98,11 +100,13 @@ const TodosState = {
     @type {(tag: string) => undefined} */
     filterByTag(tag) {
         let head = 0;
-        for (const id of TodosState.selected) {
+        let id = "";
+        for (let i = 0; i < TodosState.selected.length; i += 1) {
+            id = TodosState.selected[i];
             const todo = TodosState.todos[id];
             //we assume that todo exist, but can be undefiend;
-            for (const todoTag of todo.tags) {
-                if (todoTag === tag) {
+            for (let i = 0; i < todo.tags.length; i += 1) {
+                if (todo.tags[i] === tag) {
                     TodosState.selected[head] = id;
                     head += 1;
                 }
@@ -118,7 +122,9 @@ const TodosState = {
     filter(filterState) {
         if (filterState.status === "active") {
             let head = 0;
-            for (const id of TodosState.ids) {
+            let id = "";
+            for (let i = 0; i < TodosState.ids.length; i += 1) {
+                id = TodosState.ids[i];
                 if (!TodosState.todos[id].completed) {
                     TodosState.selected[head] = id;
                     head += 1;
@@ -130,7 +136,9 @@ const TodosState = {
             }
         } else if (filterState.status === "completed") {
             let head = 0;
-            for (const id of TodosState.ids) {
+            let id = "";
+            for (let i = 0; i < TodosState.ids.length; i += 1) {
+                id = TodosState.ids[i];
                 if (TodosState.todos[id].completed) {
                     TodosState.selected[head] = id;
                     head += 1;
@@ -148,9 +156,11 @@ const TodosState = {
 
         if (filterState.colors.length > 0) {
             let head = 0;
-            for (const id of TodosState.selected) {
-                for (const color of filterState.colors) {
-                    if (TodosState.todos[id].color === color) {
+            let id = "";
+            for (let i = 0; i < TodosState.selected.length; i += 1) {
+               id = TodosState.selected[i];
+                for (let j = 0; j < filterState.colors.length; i += 1) {
+                    if (TodosState.todos[id].color === filterState.colors[j]) {
                         TodosState.selected[head] = id;
                         head += 1;
                         break;
@@ -512,7 +522,9 @@ const TodoListActions = {
     @type {() => undefined} */
     completeAll() {
         let change = false;
-        for (const id of TodosState.ids) {
+        let id = "";
+        for (let i = 0; i < TodosState.ids.length; i += 1) {
+            id = TodosState.ids[i];
             const todo = TodosState.todos[id];
             if (!todo.completed) {
                 change = true;
@@ -520,7 +532,7 @@ const TodoListActions = {
                 localStorage.setItem(`todo.${id}`, JSON.stringify(todo));
 
                 if (FilterState.status === "completed") {
-                    TodosState.selected.push(id);
+                    // TodosState.selected.push(id);
                 } else if (FilterState.status === "all") {
                     TodosState.todosDispatch[id](changeState);
                 }
@@ -529,8 +541,14 @@ const TodoListActions = {
         if (!change || FilterState.status === "all") {
             return;
         }
-        if (FilterState.status === "active") {
-            TodosState.selected.length = 0;
+        switch (FilterState.status) {
+            case "all": return;
+            case "active": {
+                TodosState.selected.length = 0;
+            };break;
+            case "completed": {
+                TodosState.filter(FilterState);
+            }
         }
         TodosState.selectedDispatch(changeState);
     },
@@ -755,9 +773,10 @@ const ModalActions = {
     }
 }
 { // Init TagsState
-    for (const id of TodosState.ids) {
-        const todo = TodosState.todos[id];
-        TagsState.addTags(todo.tags);
+    let id = ""
+    for (let i = 0; i < TodosState.ids.length; i += 1) {
+        id = TodosState.ids[i];
+        TagsState.addTags(TodosState.todos[id].tags);
     }
 }
 { // init Modal

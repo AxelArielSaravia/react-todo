@@ -1,11 +1,14 @@
 import {readdirSync, appendFileSync, existsSync, rmSync} from "node:fs";
 import * as path from "node:path";
 
-console.info("global dir:", import.meta.dir);
+console.info("Global dir:", import.meta.dir);
 
 const DEFAULT_PATH = path.join(import.meta.dir, "public");
 const SRC_PATH = path.join(import.meta.dir, "src");
 const BUILD_PATH = path.join(import.meta.dir, "build");
+console.info("DEFAULT_PATH", DEFAULT_PATH);
+console.info("SRC_PATH", SRC_PATH);
+console.info("BUILD_PATH", BUILD_PATH);
 
 const rmOptions = {
     recursive: true,
@@ -35,11 +38,12 @@ const build = await Bun.build(
 
 
 if (!build.success) {
+    console.error(build);
     throw Error("The build fails");
 }
 
 const dir = readdirSync(BUILD_PATH);
-console.log(dir);
+console.info("Read Dir:", dir);
 
 const cssFilePath = path.join(DEFAULT_PATH, "style.css");
 const defaultCssPath = path.join(SRC_PATH, "style.css")
@@ -62,6 +66,4 @@ for await (const filepath of dir) {
         }; break;
     }
 }
-
-
 console.info("Build success");
