@@ -11,3 +11,8 @@ if (container !== null) {
 } else {
     throw Error("The root element is null, we can not use React");
 }
+
+
+if (navigator.serviceWorker !== undefined) {
+    navigator.serviceWorker.register("sw.js");
+}

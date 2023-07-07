@@ -2,6 +2,7 @@ import {readdirSync, appendFileSync} from "node:fs";
 import * as path from "node:path";
 
 import {HTMLMinify} from "./utils.js";
+
 import CleanCSS from "clean-css";
 
 console.info("Global dir:", import.meta.dir);
@@ -29,7 +30,23 @@ console.info("SRC_PATH", SRC_PATH);
         console.error(build);
         throw Error("Se rompio esta vaina wacho, el js build. Fijate que ondera");
     }
+
     console.info("JS Build Successful");
+}
+{ //service worker
+
+    const config_serviceworker = {
+        entrypoints: ["./src/serviceworker.js"],
+        outdir: PUBLIC_PATH,
+        minify: PRODUCTION_ENV
+    };
+
+    const build = await Bun.build(config_serviceworker);
+    if (!build.success) {
+        console.error(build);
+        throw Error("Se rompio esta vaina wacho, el js build. Fijate que ondera");
+    }
+    console.info("JS service worker Build Successful");
 }
 
 /*********************
@@ -44,10 +61,7 @@ console.info("SRC_PATH", SRC_PATH);
     if (PRODUCTION_ENV) {
         const file = await Bun.file(default_css_file).text();
         const s = new CleanCSS().minify(file).styles;
-        await Bun.write(
-            Bun.file(public_css_file),
-            s
-        );
+        await Bun.write(Bun.file(public_css_file), s);
     } else {
         await Bun.write(
             Bun.file(public_css_file),
