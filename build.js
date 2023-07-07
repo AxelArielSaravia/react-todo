@@ -2,6 +2,7 @@ import {readdirSync, appendFileSync} from "node:fs";
 import * as path from "node:path";
 
 import {HTMLMinify} from "./utils.js";
+import CleanCSS from "clean-css";
 
 console.info("Global dir:", import.meta.dir);
 
@@ -28,7 +29,7 @@ console.info("SRC_PATH", SRC_PATH);
         console.error(build);
         throw Error("Se rompio esta vaina wacho, el js build. Fijate que ondera");
     }
-    console.info("JS Build succeed");
+    console.info("JS Build Successful");
 }
 
 /*********************
@@ -39,10 +40,20 @@ console.info("SRC_PATH", SRC_PATH);
     const CSS_EXT = ".css";
     const default_css_file = path.join(SRC_PATH, CSS_FILE);
     const public_css_file = path.join(PUBLIC_PATH, CSS_FILE);
-    await Bun.write(
-        Bun.file(public_css_file),
-        Bun.file(default_css_file)
-    );
+
+    if (PRODUCTION_ENV) {
+        const file = await Bun.file(default_css_file).text();
+        const s = new CleanCSS().minify(file).styles;
+        await Bun.write(
+            Bun.file(public_css_file),
+            s
+        );
+    } else {
+        await Bun.write(
+            Bun.file(public_css_file),
+            Bun.file(default_css_file)
+        );
+    }
 
     const read_dir_path = path.join(SRC_PATH, "components");
     const read_dir = readdirSync(read_dir_path);
@@ -53,9 +64,15 @@ console.info("SRC_PATH", SRC_PATH);
         }
         const read_file = path.join(read_dir_path, file_name);
         const file = await Bun.file(read_file).text();
-        appendFileSync(public_css_file, file);
+
+        if (PRODUCTION_ENV) {
+            let s = new CleanCSS().minify(file).styles;
+            appendFileSync(public_css_file, s);
+        } else {
+            appendFileSync(public_css_file, file);
+        }
     }
-    console.info("CSS Build Succeed");
+    console.info("CSS Build Successful");
 }
 
 
@@ -63,21 +80,30 @@ console.info("SRC_PATH", SRC_PATH);
 * HTML Builds
 **********************/
 {
-    const read_dir_path = path.join(SRC_PATH, "html");
-    const read_dir = readdirSync(read_dir_path);
-    for (const file_name of read_dir) {
-        const html_file = path.join(read_dir_path, file_name);
-        const public_file = path.join(PUBLIC_PATH, file_name);
+    const HTML_FILES = ["index.html", "404.html"];
+    for (const html_file of HTML_FILES) {
+        const read = path.join(SRC_PATH, html_file);
+        const public_file = path.join(PUBLIC_PATH, html_file);
         if (PRODUCTION_ENV) {
-            const file_string = await Bun.file(html_file).text();
-            const minify = HTMLMinify(file_string);
-            await Bun.write(Bun.file(public_file), minify);
+            const html_string = await Bun.file(read).text();
+            const html_mini = HTMLMinify(html_string);
+            await Bun.write(Bun.file(public_file), html_mini);
         } else {
             await Bun.write(
                 Bun.file(public_file),
-                Bun.file(html_file)
+                Bun.file(read)
             );
         }
     }
-    console.info("HTML Build Succeed");
+    console.info("HTML Build Successful");
+}
+
+
+/*********************
+* MANIFEST Builds
+**********************/
+{
+    const src_file = path.join(SRC_PATH, "manifest.json");
+    const public_file = path.join(PUBLIC_PATH, "app.webmanifest");
+    Bun.write(Bun.file(public_file), Bun.file(src_file));
 }
