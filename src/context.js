@@ -120,46 +120,32 @@ const TodosState = {
     /**
     @type {(filterState: FilterState) => undefined} */
     filter(filterState) {
-        if (filterState.status === "active") {
-            let head = 0;
-            let id = "";
-            for (let i = 0; i < TodosState.ids.length; i += 1) {
-                id = TodosState.ids[i];
-                if (!TodosState.todos[id].completed) {
-                    TodosState.selected[head] = id;
-                    head += 1;
-                }
-            }
-            //Remove the extra ids at the end
-            if (head < TodosState.selected.length) {
-                TodosState.selected.length = head;
-            }
-        } else if (filterState.status === "completed") {
-            let head = 0;
-            let id = "";
-            for (let i = 0; i < TodosState.ids.length; i += 1) {
-                id = TodosState.ids[i];
-                if (TodosState.todos[id].completed) {
-                    TodosState.selected[head] = id;
-                    head += 1;
-                }
-            }
-            //Remove the extra ids at the end
-            if (head < TodosState.selected.length) {
-                TodosState.selected.length = head;
-            }
-        } else {
+        if (filterState.status === "all") {
             for (let i = 0; i < TodosState.ids.length; i += 1) {
                 TodosState.selected[i] = TodosState.ids[i];
             }
+        } else {
+            const hasToBeComplete = FilterState.status === "completed";
+            let head = 0;
+            let id = "";
+            for (let i = 0; i < TodosState.ids.length; i += 1) {
+                id = TodosState.ids[i];
+                if (TodosState.todos[id].completed === hasToBeComplete) {
+                    TodosState.selected[head] = id;
+                    head += 1;
+                }
+            }
+            //Remove the extra ids at the end
+            if (head < TodosState.selected.length) {
+                TodosState.selected.length = head;
+            }
         }
-
         if (filterState.colors.length > 0) {
             let head = 0;
             let id = "";
             for (let i = 0; i < TodosState.selected.length; i += 1) {
                id = TodosState.selected[i];
-                for (let j = 0; j < filterState.colors.length; i += 1) {
+                for (let j = 0; j < filterState.colors.length; j += 1) {
                     if (TodosState.todos[id].color === filterState.colors[j]) {
                         TodosState.selected[head] = id;
                         head += 1;
