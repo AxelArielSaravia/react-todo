@@ -1,8 +1,8 @@
 const CACHE_NAME = "rta";
 const urlsToCache = [
     "/",
-    "/styles.css",
-    "/index.js",
+    "/style.css",
+    "/main.js",
     "/icon/512.png"
 ];
 

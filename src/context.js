@@ -153,28 +153,28 @@ const TodosState = {
                     }
                 }
             }
-            //Remove the extra ids at the end
-            if (head < TodosState.selected.length) {
-                TodosState.selected.length = head;
-            }
+            TodosState.selected.length = head;
         }
         if (filterState.tags.length > 0) {
             let head = 0;
-            for (const id of TodosState.selected) {
-                include:
-                for (const tag of filterState.tags) {
-                    for (const todotag of TodosState.todos[id].tags) {
-                        if (todotag === tag) {
+            let selectedLen = TodosState.selected.length;
+            let i = 0;
+            while (i < FilterState.tags.length && selectedLen > 0) {
+                const tag = FilterState.tags[i];
+                for (let j = 0; j < selectedLen; j += 1) {
+                    const id = TodosState.selected[j];
+                    const todo = TodosState.todos[id];
+                    for (let k = 0; k < todo.tags.length; k += 1) {
+                        const todoTag = todo.tags[k];
+                        if (todoTag === tag) {
                             TodosState.selected[head] = id;
                             head += 1;
-                            break include;
                         }
                     }
                 }
-            }
-            //Remove the extra ids at the end
-            if (head < TodosState.selected.length) {
                 TodosState.selected.length = head;
+                selectedLen = head;
+                i += 1;
             }
         }
     }
@@ -497,7 +497,7 @@ const TodoListActions = {
                 if (selectTr !== -1) {
                     TodosState.selected.length = selectTr;
                 }
-            }; break;
+            };break;
             case "completed": {
                 TodosState.selected.length = 0;
             }
